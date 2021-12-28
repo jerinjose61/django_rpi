@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %}
+
+{% block head %}
+<title>Home</title>
+{% endblock %}
+
+{% block body %}
+<div class="mt-4">
+    <div class="text-center">
+        <h1>Welcome to the Class!!</h1>
+        <a class="btn btn-primary" href="{% url 'app:add_student' %}">Add Student</a>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <th width="60%">Name</th>
+                    <th width="20%" class="text-center">Age</th>
+                    <th width="20%" class="text-center">Actions</th>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student.name }}</td>
+                        <td class="text-center">{{ student.age }}</td>
+                        <td class="text-center">
+                            <a class="btn btn-secondary" href="{% url 'app:edit_student' pk=student.pk %}"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-danger" href="{% url 'app:delete_student' pk=student.pk %}"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock %}
