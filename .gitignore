@@ -1,3 +1,2 @@
 app/__pycache__/*
-app/migrations/*
 django_rpi/__pycache__/*
